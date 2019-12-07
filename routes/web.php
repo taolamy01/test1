@@ -49,7 +49,7 @@ Route::group(['prefix'=>'admin','namespace'=>"Admin"],function(){
     //root/admin/danh-muc
     Route::group(['prefix' => 'danh-muc'], function () {
         //root/admin/danh-muc/list-danh-muc
-        Route::get("list-danh-muc",['as'=>'list-danh-muc','uses'=>"CategoryController@listCategory"]);
+        Route::get("list-danh-muc",['as'=>'list-danh-muc','uses'=>"CategoryController@listCategorys"]);
         //root/admin/danh-muc/them-danh-muc
         Route::get("them", ['as' => 'them-danh-muc', 'uses' => 'CategoryController@getAddCategory']);
         //root/admin/danh-muc/them-danh-muc
