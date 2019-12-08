@@ -20,9 +20,13 @@ class CategoryController extends Controller
         $list_root_category=DB::table("Categories")->where('parent','=',null)->get();/*video 34 phust 48:00*/
 
         $list_sub_category=DB::table("Categories")->where('parent','!=',null)->get();/*video 34 phust 48:00*/
+        $list_lever1=DB::table("Categories")->where('lever1','!=',null)->get();/*video 34 phust 48:00*/
 
-
-        return view('admin.category.add_category',compact('list_root_category','list_sub_category'));
+        /*echo "<pre>";
+        print_r($list_lever1,false);
+        echo "</pre>";
+        die;*/
+        return view('admin.category.add_category',compact('list_root_category','list_sub_category','list_lever1'));
     }
     /**/
 
@@ -30,6 +34,7 @@ class CategoryController extends Controller
     function postaddCategory(Request $request)
     {
         $post = $request->all();
+
         $request->validate([
             'category_name' => 'required|unique:Categories|max:255',
            // 'image_category' => 'required',
@@ -42,6 +47,7 @@ class CategoryController extends Controller
         $categoriModel->ordering = $post['ordering'];
         $categoriModel->description = $post['description'];
         $categoriModel->parent = $post['parent'];
+        $categoriModel->lever1 = $post['lever1'];
         $categoriModel->published = 1;
         $categoriModel->save();
         //if ($categoriModel->save()) {

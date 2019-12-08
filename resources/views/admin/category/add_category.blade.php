@@ -29,6 +29,18 @@
                     </td>
                 </tr>
                 <tr>
+                    <th>Lever1</th>
+                    <td>
+                        <select name="lever1">
+                            <option value="">Root</option>
+                        @foreach($list_lever1 as $lever1)
+                                <option value="{{$lever1->id}}">{{$lever1->category_name}}</option>
+
+                            @endforeach
+                        </select>
+                    </td>
+                </tr>
+                <tr>
                     <th>Image</th>
                     <td><input type="file" name="image_category" class="form-control" value=""></td>
                 </tr>
