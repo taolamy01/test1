@@ -11,6 +11,7 @@
                     <th>Description</th>
                     <th>Orderings</th>
                     <th>Parent</th>
+                    <th>Lever1</th>
                     <th><a href="{{route('them-danh-muc')}}" class="btn btn-primary" >Add new</a></th>
                 </tr>
             </thead>
@@ -23,6 +24,7 @@
                         <td>{{$category->description}}</td>
                         <td>{{$category->ordering}}</td>
                         <td>{{$category->parent}}</td>
+                        <td>{{$category->lever1}}</td>
                         <td><a href="{{route('sua-danh-muc',$category->id)}}" class="btn btn-primary">Edit</a>
                             <a href="{{route('xoa-danh-muc',$category->id)}}" class="btn btn-primary">Delete</a>
                         </td>

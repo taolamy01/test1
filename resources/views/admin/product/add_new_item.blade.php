@@ -25,8 +25,8 @@
                 <th>Category=Thể loại</th>
                 <th>
                     <select name="category_id">
-                        @foreach($list_sub_category as $category)
-                            <option value="{{$category->id}}">{{$category->category_name}}</option>
+                        @foreach($list_lever1 as $lever1)
+                            <option value="{{$lever1->id}}">{{$lever1->category_name}}</option>
                         @endforeach
                     </select>
                 </th>

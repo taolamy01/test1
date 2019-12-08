@@ -18,8 +18,7 @@
                 </tr>
                 <tr>
                     <th>Parent</th>
-                    <td>
-
+                    <td style="display: none">
                         <select name="parent" class="form-control">
                             <option value="" {{$category->parent == "" ? "selected" : ""}}>Root</option> /**/
                             @foreach($list_root_category as $item_category)
@@ -29,6 +28,7 @@
 
                     </td>
                 </tr>
+
                 <tr>
                     <th>Image</th>
                     <td>
@@ -37,9 +37,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>Orderings</th>
+                    <th>ordering</th>
                     <td>
-
+                        <input type="text" class="form-control" value="{{$category->ordering}}" name="ordering">
                     </td>
                 </tr>
                 <tr>

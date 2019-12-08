@@ -20,12 +20,8 @@ class CategoryController extends Controller
         $list_root_category=DB::table("Categories")->where('parent','=',null)->get();/*video 34 phust 48:00*/
 
         $list_sub_category=DB::table("Categories")->where('parent','!=',null)->get();/*video 34 phust 48:00*/
-        $list_lever1=DB::table("Categories")->where('lever1','!=',null)->get();/*video 34 phust 48:00*/
+        $list_lever1=DB::table("Categories")->where('lever1','=',null )->where('parent','!=',null)->get();/*video 34 phust 48:00*/
 
-        /*echo "<pre>";
-        print_r($list_lever1,false);
-        echo "</pre>";
-        die;*/
         return view('admin.category.add_category',compact('list_root_category','list_sub_category','list_lever1'));
     }
     /**/
@@ -36,7 +32,7 @@ class CategoryController extends Controller
         $post = $request->all();
 
         $request->validate([
-            'category_name' => 'required|unique:Categories|max:255',
+            'category_name' => 'required|unique:Categories,id|max:255',
            // 'image_category' => 'required',
             'ordering' => 'required',
             'description' => 'required',
@@ -76,6 +72,8 @@ class CategoryController extends Controller
         $category = Categories::find($id);
         $list_root_category=DB::table("Categories")->where('parent','=',null)->get();
 
+
+
         return view('admin.category.edit_category', compact('category','list_root_category'));
     }
     /**/
@@ -84,6 +82,7 @@ class CategoryController extends Controller
     function postEditCategory($id, Request $request)
     {
         $post = $request->all();
+
         $request->validate([
             'category_name' => 'required|unique:categories,id|max:255',
             'ordering' => 'required',
@@ -92,6 +91,7 @@ class CategoryController extends Controller
         $categoriModel = Categories::find($id);
         $categoriModel->category_name = $post['category_name'];
         $categoriModel->ordering = $post['ordering'];
+        $categoriModel->parent = $post['parent'];
         $categoriModel->description = $post['description'];
         if ($categoriModel->save()) {
             if ($request->hasFile('image_category')) {
