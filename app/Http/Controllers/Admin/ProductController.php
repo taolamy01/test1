@@ -19,7 +19,7 @@ class ProductController extends Controller
     {
 
         /*$list_sub_category=DB::table("Categories")->where('parent','!=',null)->get();*//*video 34 phust 48:00*/
-        $list_lever1=DB::table("Categories")->where('parent','!=',null)->where('lever1','!=',null)->get();/*video 34 phust 48:00*/
+        $list_lever1=DB::table("Categories")->where('parent','!=',null)->where('lever1','!=',null)->get();/*video 34 phust 48:001*/
 
         return view('admin.product.add_new_item',compact('list_lever1'));
     }
