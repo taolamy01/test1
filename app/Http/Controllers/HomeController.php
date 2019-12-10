@@ -26,6 +26,13 @@ class HomeController extends Controller
     {
         $discount_products=Products::all();
         $new_products=Products::all();
-        return view('home',compact('discount_products','new_products'));
+        return view('home');
+    }
+
+    public function new()
+    {
+        $discount_products=Products::all();
+        $new_products=Products::all();
+        return view('new',compact('discount_products','new_products'));
     }
 }

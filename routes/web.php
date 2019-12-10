@@ -33,6 +33,10 @@ Route::post("gioi-thieu",['as'=>'gioi-thieu','uses'=>"CartController@removeItemC
 Route::post("lien-he",['as'=>'lien-he','uses'=>"CartController@removeItemCart"]);
 
 Route::get("gio-hang/",['as'=>'gio-hang','uses'=>"CartController@index"]);
+
+Route::get("new",['as'=>'new','uses'=>"HomeController@new"]);
+
+
 Route::group(['prefix'=>'admin','namespace'=>"Admin"],function(){
     Route::group(['prefix' => 'san-pham'], function () {
         //root/admin/san-pham/danh-sach
