@@ -5,28 +5,38 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Sản phẩm</th>
                     <th>Đơn giá</th>
+                    <th>Tổng Tạm Tính</th>
                     <th>Số lượng</th>
-                    <th>Tổng</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach (Cart::content() as $item)
                     <tr>
-                        <td>{{$item->name}}</td>
-                        <td>{{$item->price}}</td>
-                        <td>{{$item->qty}}</td>
-                        <td>{{$item->price*$item->qty}}</td>
-                        <td>{{$item->rowId}}</td>
-                        <td>
-                            <form action="{{route('remove-item-cart',$item->rowId)}}" method="post">
-                                <button class="btn btn-primary">Delete</button>
-                                {{csrf_field()}}
-                            </form>
 
-                        </td>
+                                    <td>{{$item->id}}</td>
+                                    <td>{{$item->name}}</td>
+                                    <td>{{$item->price}}</td>
+                                    <td style="display: none">{{$item->qty}}</td>
+                                    <td>{{$item->price*$item->qty}}</td>
+                                    <td >
+                                        <form action="{{route('update-cart',$item->id)}}" method="post">
+                                            <input type="number" name="qty" value="{{$item->qty}}">
+                                            <input  style="display: none" type="number" name="qty2" value="{{$item->qty}}">
+                                            <button class="btn btn-primary" type="submit">update</button>
+                                        {{csrf_field()}}
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="{{route('remove-item-cart',$item->rowId)}}" method="post">
+                                            <button class="btn btn-primary">Delete</button>
+                                            {{csrf_field()}}
+                                        </form>
+                                    </td>
+                                    <td>{{$item->rowId}}</td>
                     </tr>
 
                 @endforeach
@@ -48,4 +58,11 @@
             </div>
         </div>
     </div>
+
 @endsection
+<!-- <td style="display: none">
+                            <form action="{{route('remove-item-cart',$item->rowId)}}" method="post">
+                                <button class="btn btn-primary">Delete</button>
+                                {{csrf_field()}}
+    </form>
+     </td>-->

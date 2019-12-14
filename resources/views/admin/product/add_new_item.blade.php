@@ -31,7 +31,18 @@
                     </select>
                 </th>
             </tr>
-
+            <tr>
+                <th>Size</th>
+                <th >
+                    <div class="row">
+                        <div class="col-md-2">S<input type="number" name="S" value="1000"></div>
+                        <div class="col-md-2">M<input type="number" name="M" value="1000"></div>
+                        <div class="col-md-2">L<input type="number" name="L" value="1000"></div>
+                        <div class="col-md-2">XL<input type="number" name="XL" value="1000"></div>
+                        <div class="col-md-2">XXL<input type="number" name="XXL" value="1000"></div>
+                    </div>
+                </th>
+            </tr>
             <tr>
                 <th>Publish</th>
                 <th>

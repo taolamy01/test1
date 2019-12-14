@@ -9,6 +9,11 @@ use App\products;
 //todo use App\products; phải có file Providers trùng tên với bảng trogn databay mới gọi được bảng ở đây là Providers/Products.php
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+
+        $this->middleware('auth');
+    }
     function getListProduct()
     {
         $products = products::orderBy('id', 'DESC')->get();
@@ -41,6 +46,12 @@ class ProductController extends Controller
         $productModel = new products();
         $productModel->product_name = $post['product_name'];
         $productModel->category_id = $post['category_id'];
+        $productModel->S = $post['S'];
+        $productModel->M = $post['M'];
+        $productModel->L = $post['L'];
+        $productModel->XL = $post['XL'];
+        $productModel->XXL = $post['XXL'];
+        $productModel->total_size = $post['S']+$post['M']+$post['L']+$post['XL']+$post['XXL'];
         $productModel->publish = $post['publish'];
         $productModel->price = $post['price'];
         $productModel->sale_price = $post['sale_price'];
@@ -69,7 +80,8 @@ class ProductController extends Controller
  /**/
     function getEditProduct($id){
         $product=products::find($id);
-        return view('admin.product.edit_item',compact('product'));
+        $list_lever1=DB::table("Categories")->where('parent','!=',null)->where('lever1','!=',null)->get();/*video 34 phust 48:001*/
+        return view('admin.product.edit_item',compact('product','list_lever1'));
     }
 
     /**/
@@ -89,6 +101,12 @@ class ProductController extends Controller
         $productModel->product_name=$post['product_name'];
         $productModel->category_id=$post['category_id'];
         $productModel->publish=$post['publish'];
+        $productModel->S = $post['S'];
+        $productModel->M = $post['M'];
+        $productModel->L = $post['L'];
+        $productModel->XL = $post['XL'];
+        $productModel->XXL = $post['XXL'];
+        $productModel->total_size = $post['S']+$post['M']+$post['L']+$post['XL']+$post['XXL'];
         $productModel->price=$post['price'];
         $productModel->sale_price=$post['sale_price'];
         $productModel->ordering=$post['ordering'];

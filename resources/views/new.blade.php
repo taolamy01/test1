@@ -78,15 +78,21 @@ ss
 
                     <div class="col-md-9 col-xs-12">
                         <div class="row">
-                            <div class="col-sm-4">
-                                ss
-                            </div>
-                            <div class="col-sm-4">
-                                ss
-                            </div>
-                            <div class="col-sm-4">
-                                ss
-                            </div>
+                            @foreach($discount_products as $product)
+                                <div class="col-sm-4">
+                                    <div class="wrapper-image">
+                                        <img class="product-image-intro" style="width: 100%;" src="{{url('/')}}/{{$product->product_image_intro}}">
+                                    </div>
+                                    <h4 class="product-name">{{$product->product_name}}</h4>
+                                    <div class="prices">
+                                        <span class="sale-price">{{$product->sale_price}}</span>
+                                        <span class="price">{{$product->price}}</span>
+                                        <span class="currency">đ</span>
+                                    </div>
+                                    <a href="{{route('product-detail',$product->id)}}" class="btn btn-primary btn-block"><i class="fas fa-search-plus"></i> Chi tiết</a>
+                                </div>
+                            @endforeach
+
                         </div>
                     </div>
                 </div>

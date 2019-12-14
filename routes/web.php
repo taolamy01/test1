@@ -17,9 +17,12 @@ Route::get('/', function () {
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get("product-detail/{id}",['as'=>'product-detail','uses'=>"ProductController@getDetailProduct"]);
+
 Route::post("add-to-cart/{id}",['as'=>'add-to-cart','uses'=>"CartController@postAddTocart"]);
 Route::get("thanh-toan",['as'=>'thanh-toan','uses'=>"CartController@payNow"]);
+Route::post("update-cart/{id}",['as'=>'update-cart','uses'=>"CartController@updateCart"]);
 Route::get("danh-muc/{id}",['as'=>'danh-muc','uses'=>"CartController@payNow"]);
 Route::post("thanh-toan",['as'=>'thanh-toan','uses'=>"CartController@postpayNow"]);
 Route::post("remove-item-cart/{rowid}",['as'=>'remove-item-cart','uses'=>"CartController@removeItemCart"]);
@@ -36,7 +39,9 @@ Route::get("gio-hang/",['as'=>'gio-hang','uses'=>"CartController@index"]);
 
 Route::get("new",['as'=>'new','uses'=>"HomeController@new"]);
 
-
+Route::get('/admin', function () {
+    return view('admin.layouts.admin');
+});
 Route::group(['prefix'=>'admin','namespace'=>"Admin"],function(){
     Route::group(['prefix' => 'san-pham'], function () {
         //root/admin/san-pham/danh-sach

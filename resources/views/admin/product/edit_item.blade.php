@@ -27,11 +27,25 @@
                     <th>Category</th>
                     <th>
                         <select name="category_id">
-                            <option value="1">Điện thoại</option>
-                            <option value="2">Điện tử</option>
+                            @foreach($list_lever1 as $lever1)
+                                <option value="{{$lever1->id}}">{{$lever1->category_name}}</option>
+                            @endforeach
                         </select>
                     </th>
                 </tr>
+                <tr>
+                    <th>Size</th>
+                    <th >
+                        <div class="row">
+                            <div class="col-md-2">S<input type="number" name="S" value="{{$product->S}}"></div>
+                            <div class="col-md-2">M<input type="number" name="M" value="{{$product->M}}"></div>
+                            <div class="col-md-2">L<input type="number" name="L" value="{{$product->L}}"></div>
+                            <div class="col-md-2">XL<input type="number" name="XL" value="{{$product->XL}}"></div>
+                            <div class="col-md-2">XXL<input type="number" name="XXL" value="{{$product->XXL}}"></div>
+                        </div>
+                    </th>
+                </tr>
+
                 <tr>
                     <th>Publish</th>
                     <th>

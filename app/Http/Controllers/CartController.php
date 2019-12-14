@@ -15,6 +15,10 @@ use App\Orders;
 
 class CartController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //
     public function index(){
         return view("cart");
@@ -23,12 +27,31 @@ class CartController extends Controller
     public function postAddTocart($id,Request $request){
         $product=Products::find($id);
         $post=$request->all();
+
         $price=$product->price;
         if($product->sale_price){
             $price=$product->sale_price;
         }
         Cart::add($id,$product->product_name,$post['quality'],$price);
         return redirect(route('gio-hang'));
+
+    }
+ public function updateCart($id,Request $request){
+        $product=Products::find($id);
+        $post=$request->all();
+        $qty=$post['qty']-$post['qty2'];
+         if ($qty == 0)
+         {
+             return redirect(route('gio-hang'));
+         }
+        $price=$product->price;
+        if($product->sale_price){
+            $price=$product->sale_price;
+        }
+
+        Cart::add($id,$product->product_name,$qty,$price);
+        return redirect(route('gio-hang'));
+
     }
 
     public function payNow(){

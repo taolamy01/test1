@@ -8,6 +8,7 @@
                     <th>Product name</th>
                     <th>Image</th>
                     <th>Publish</th>
+                    <th>Size</th>
                     <th>category_id</th>
                     <th>ordering</th>
                     <th>price</th>
@@ -23,6 +24,14 @@
                         <td>{{$product->product_name}}</td>
                         <td><img class="product-image-intro" src="{{url('/')}}/{{$product->product_image_intro}}"></td>
                         <td>{{$product->publish}}</td>
+                        <td>S={{$product->S}}
+                            M={{$product->M}}
+                            L={{$product->L}}
+                            XL={{$product->XL}}
+                            XXL={{$product->XXL}}
+                            Total={{$product->total_size}}
+
+                        </td>
                         <td>{{$product->category_id}}</td>
                         <td>{{$product->ordering}}</td>
                         <td>{{$product->price}}</td>

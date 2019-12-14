@@ -7,7 +7,13 @@ use Illuminate\Http\Request;
 use App\Categories;
 
 class CategoryController extends Controller
+
 {
+    public function __construct()
+    {
+
+        $this->middleware('auth');
+    }
     function listCategory()
     {
         $categories = Categories::orderBy('id', 'DESC')->get();
@@ -32,7 +38,7 @@ class CategoryController extends Controller
         $post = $request->all();
 
         $request->validate([
-            'category_name' => 'required|unique:Categories,id|max:255',
+            'category_name' => 'required|unique:Categories|max:255',
            // 'image_category' => 'required',
             'ordering' => 'required',
             'description' => 'required',
