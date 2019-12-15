@@ -14,9 +14,11 @@ class ProductController extends Controller
 
         $this->middleware('auth');
     }
+
     function getListProduct()
     {
         $products = products::orderBy('id', 'DESC')->get();
+
         return view('admin.product.list_product', compact('products'));
     }
 
@@ -132,5 +134,11 @@ class ProductController extends Controller
         return redirect(route('danh-sach-san-pham'));
     }
 
+    /**/
+    function getDeleteProduct($id,Request $request){
+        $category=products::find($id);
+        $category->delete();
+        return redirect(route('danh-sach-san-pham'));
+    }
     /**/
 }

@@ -14,9 +14,12 @@ class CategoryController extends Controller
 
         $this->middleware('auth');
     }
-    function listCategory()
+
+    function getListCategory()
     {
-        $categories = Categories::orderBy('id', 'DESC')->get();
+
+        $categories = categories::orderBy('id', 'DESC')->get();
+
         return view('admin.category.list_category', compact('categories'));
     }
 
@@ -77,8 +80,6 @@ class CategoryController extends Controller
     {
         $category = Categories::find($id);
         $list_root_category=DB::table("Categories")->where('parent','=',null)->get();
-
-
 
         return view('admin.category.edit_category', compact('category','list_root_category'));
     }

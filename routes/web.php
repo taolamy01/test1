@@ -42,6 +42,9 @@ Route::get("new",['as'=>'new','uses'=>"HomeController@new"]);
 Route::get('/admin', function () {
     return view('admin.layouts.admin');
 });
+
+
+
 Route::group(['prefix'=>'admin','namespace'=>"Admin"],function(){
     Route::group(['prefix' => 'san-pham'], function () {
         //root/admin/san-pham/danh-sach
@@ -54,17 +57,20 @@ Route::group(['prefix'=>'admin','namespace'=>"Admin"],function(){
         Route::get("sua-san-pham/{id}", ['as' => 'sua-san-pham', 'uses' => 'ProductController@getEditProduct']);
         //root/admin/san-pham/sua-san-pham/3
         Route::post("sua-san-pham/{id}", ['as' => 'post-sua-san-pham', 'uses' => 'ProductController@postEditProduct']);
+
+        Route::get("xoa-san-pham/{id}", ['as' => 'xoa-san-pham', 'uses' => 'ProductController@getDeleteProduct']);
     });
     //root/admin/danh-muc
     Route::group(['prefix' => 'danh-muc'], function () {
         //root/admin/danh-muc/list-danh-muc
-        Route::get("list-danh-muc",['as'=>'list-danh-muc','uses'=>"CategoryController@listCategory"]);
+        Route::get("list-danh-muc",['as'=>'list-danh-muc','uses'=>"CategoryController@getListCategory"]);
         //root/admin/danh-muc/them-danh-muc
         Route::get("them", ['as' => 'them-danh-muc', 'uses' => 'CategoryController@getAddCategory']);
         //root/admin/danh-muc/them-danh-muc
         Route::get("sua-danh-muc/{id}", ['as' => 'sua-danh-muc', 'uses' => 'CategoryController@getEditCategory']);
         //root/admin/danh-muc/xoa-danh-muc
         Route::get("xoa-danh-muc/{id}", ['as' => 'xoa-danh-muc', 'uses' => 'CategoryController@getDeleteCategory']);
+
         //root/admin/danh-muc/post-them-category
         Route::post('post-them-category',['as'=>"post-them-category",'uses'=>'CategoryController@postaddCategory']);
         //root/admin/post-edit-category
