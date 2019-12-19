@@ -25,9 +25,12 @@
                                         <p>nhr</p>
                                     </div>
                                 </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="{{ asset('upload\Baner-thời-trang-nam-1.jpg') }}" alt="Second slide">
-                                </div>
+
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="{{ asset('upload\Baner-thời-trang-nam-1.jpg') }}" alt="Second slide">
+                                    </div>
+
+
                                 <div class="carousel-item">
                                     <img class="d-block w-100" src="{{ asset('upload\Ảnh-bìa-web-1920x800-kids4.jpg') }}" alt="Third slide">
                                 </div>
@@ -42,6 +45,11 @@
                             </a>
                         </div>
                     </div>
+                </div>
+                <div>
+                    @foreach($order_product as $aa)
+                           <div>{{$aa->product_name}}</div>
+                    @endforeach
                 </div>
             </div>
 
@@ -133,6 +141,32 @@
             </div>
         </div>
     </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{ asset('assets\admin\vendor/jquery/jquery.js') }}"></script>
+    <!-- Bootstrap core JavaScript <script src="{{ asset('assets\admin\vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>-->
+
+
+
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{ asset('assets\admin\vendor/jquery-easing/jquery.easing.js') }}"></script>
+
+
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{ asset('assets\admin/js/sb-admin-2.min.js') }}"></script>
+
+
+
+    <!-- Page level plugins -->
+    <script src="{{ asset('assets\admin\vendor/datatables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('assets\admin\vendor/datatables/dataTables.bootstrap4.js') }}"></script>
+
+
+
+
+    <!-- Page level custom scripts -->
+    <script src="{{ asset('assets\admin\js/demo/datatables-demo.js') }}" rel="stylesheet"></script>
 
 
 @endsection

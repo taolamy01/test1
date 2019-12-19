@@ -15,20 +15,20 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Product</th>
-                        <th>Category_id</th>
-                        <th>parent</th>
-                        <th>lever1</th>
+                        <th>Category_name</th>
+                        <th>Parent</th>
+                        <th>Lever1</th>
+                        <th>Ordering</th>
                         <th><a href="{{route('them-danh-muc')}}" class="btn btn-primary">Add Category</a></th>
                     </tr>
                     </thead>
                     <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Product name</th>
-                        <th>Category_id</th>
-                        <th>Price</th>
-                        <th>Sale Price</th>
+                        <th>Category_name</th>
+                        <th>Parent</th>
+                        <th>Lever1</th>
+                        <th>Ordering</th>
                         <th></th>
                     </tr>
                     </tfoot>
@@ -54,7 +54,8 @@
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('assets\admin\vendor/jquery/jquery.js') }}"></script>
-    <script src="{{ asset('assets\admin\vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
+    <!-- Bootstrap core JavaScript <script src="{{ asset('assets\admin\vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>-->
+
 
 
 

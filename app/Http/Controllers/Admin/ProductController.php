@@ -9,16 +9,11 @@ use App\products;
 //todo use App\products; phải có file Providers trùng tên với bảng trogn databay mới gọi được bảng ở đây là Providers/Products.php
 class ProductController extends Controller
 {
-    public function __construct()
-    {
 
-        $this->middleware('auth');
-    }
 
     function getListProduct()
     {
         $products = products::orderBy('id', 'DESC')->get();
-
         return view('admin.product.list_product', compact('products'));
     }
 

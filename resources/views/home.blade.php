@@ -1,8 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.aa')
 
 @section('content')
-
-
 
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">

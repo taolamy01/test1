@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+
     }
 
     /**
@@ -28,6 +28,14 @@ class HomeController extends Controller
         $new_products=Products::all();
         return view('home');
     }
+    public function indexadmin()
+        {
+            return view('admin.layouts.admin');
+        }
+    public function dashboard()
+        {
+            return view('admin.dashboard.dashboard');
+        }
 
     public function new()
     {

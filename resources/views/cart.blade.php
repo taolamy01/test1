@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.aa')
 @section('content')
     <div class="view-cart">
         <div class="container">
@@ -16,7 +16,6 @@
                 <tbody>
                 @foreach (Cart::content() as $item)
                     <tr>
-
                                     <td>{{$item->id}}</td>
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->price}}</td>
@@ -38,7 +37,6 @@
                                     </td>
                                     <td>{{$item->rowId}}</td>
                     </tr>
-
                 @endforeach
                 </tbody>
                 <tfoot>
@@ -60,9 +58,4 @@
     </div>
 
 @endsection
-<!-- <td style="display: none">
-                            <form action="{{route('remove-item-cart',$item->rowId)}}" method="post">
-                                <button class="btn btn-primary">Delete</button>
-                                {{csrf_field()}}
-    </form>
-     </td>-->
+

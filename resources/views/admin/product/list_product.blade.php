@@ -57,7 +57,7 @@
 
         <!-- Bootstrap core JavaScript-->
         <script src="{{ asset('assets\admin\vendor/jquery/jquery.js') }}"></script>
-        <script src="{{ asset('assets\admin\vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
+    <!-- Bootstrap core JavaScript <script src="{{ asset('assets\admin\vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>-->
 
 
 

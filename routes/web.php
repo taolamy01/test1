@@ -17,6 +17,8 @@ Route::get('/', function () {
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'HomeController@indexadmin')->name('admin');
+Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
 Route::get("product-detail/{id}",['as'=>'product-detail','uses'=>"ProductController@getDetailProduct"]);
 
@@ -38,11 +40,6 @@ Route::post("lien-he",['as'=>'lien-he','uses'=>"CartController@removeItemCart"])
 Route::get("gio-hang/",['as'=>'gio-hang','uses'=>"CartController@index"]);
 
 Route::get("new",['as'=>'new','uses'=>"HomeController@new"]);
-
-Route::get('/admin', function () {
-    return view('admin.layouts.admin');
-});
-
 
 
 Route::group(['prefix'=>'admin','namespace'=>"Admin"],function(){
@@ -90,3 +87,5 @@ Route::group(['prefix'=>'admin','namespace'=>"Admin"],function(){
 
     });
 });
+
+
