@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top: -114px">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -35,64 +35,77 @@
     </div>
     <div  class="home-baner" style="margin-top: 50px" >
         <div class="row">
-            <div class="col-md-4">
-                <div class="col-lg-12">
-                    <img class="d-block w-100" src="{{ asset('upload\home-banner\Acc-2.jpg') }}" >
+            <div class="col-md-4" style="padding: 0">
+                <div class="col-lg-12" style="padding-left: 0px;padding-right: 0px;">
+                    <div><img class=" w-100" src="{{ asset('upload\home-banner\Acc-2.jpg') }}" ></div>
+                    <div><img class=" w-100" src="{{ asset('upload\home-banner\giày.jpg') }}" ></div>
+
                 </div>
-                <br>
-                <div class="col-lg-12">
-                    <img class="d-block w-100" src="{{ asset('upload\home-banner\giày.jpg') }}" >
-                </div>
+
             </div>
-            <div class="col-md-4">
-                <img class="d-block w-100" src="{{ asset('upload\home-banner\ảnh-up-web-giữa.jpg') }}" >
+            <div class="col-md-4" style="margin: 0;padding: 0">
+                <div class="col-lg-12" style="padding-left: 0px;padding-right: 0px;">
+                <img class=" w-100" src="{{ asset('upload\home-banner\ảnh-up-web-giữa.jpg') }}" >
+                </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="col-lg-12">
-                    <img class="d-block w-100" src="{{ asset('upload\home-banner\tuyển-dụng.jpg') }}" >
+            <div class="col-md-4" style="margin: 0;padding: 0">
+                <div class="col-lg-12" style="padding-left: 0px;padding-right: 0px;">
+                    <img class=" w-100" src="{{ asset('upload\home-banner\tuyển-dụng.jpg') }}" >
+                    <img class=" w-100" src="{{ asset('upload\home-banner\mix.jpg') }}">
                 </div>
-                <br>
-                <div class="col-lg-12">
-                    <img class="d-block w-100" src="{{ asset('upload\home-banner\mix.jpg') }}">
-                </div>
-            </div>
+
         </div>
     </div>
+        <hr>
+        <hr>
+
     <div class="container">
-        <div class="sale-content">
-            <h1>Sale</h1>
+        <div class="row">
+            <h1 style="font-family: Sans-Serif;font-weight: bold">Sale</h1>
         </div>
         <div class="row">
-            <div class="col-md-3"><img class="d-block w-100" src="{{ asset('upload\home-banner\mix.jpg') }}"><h4 style="text-align: center">3123</h4></div>
-            <div class="col-md-3"><img class="d-block w-100" src="{{ asset('upload\home-banner\mix.jpg') }}"><h4 style="text-align: center">s213213s</h4></div>
-            <div class="col-md-3"><img class="d-block w-100" src="{{ asset('upload\home-banner\mix.jpg') }}"><h4 style="text-align: center">s321s</h4></div>
-            <div class="col-md-3"><img class="d-block w-100" src="{{ asset('upload\home-banner\mix.jpg') }}"><h4 style="text-align: center">s213s</h4></div>
-        </div>
-    </div>
-    <hr style="margin-top: 150px">
+            <div class="col-md-3">
+                <div class="hiden" style="position: relative;">
+                    <div class="hiden-conten" >
+                        <div style="position: relative;">
+                            <div>
+                                <img  style="width:100%;" src="{{ asset('upload\hinh thoi.png') }}">
+                            </div>
+                            <div class="priceq">
+                                10000$
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="chufree" style="position: absolute;top: -5px;right: -10px;z-index: 3;">
+                        <div >
+                            <img  class="w-100" src="{{ asset('upload\new.png') }}">
+                        </div>
+                    </div>
+                    <img style=" border:1px solid rgba(122,122,122,0.42);" class="w-100" src="{{ asset('upload\G1011-750k-2-copy-Copy-480x635.jpg') }}">
+                    <h4 style="text-align: center;margin-top: 10px;font-family: Sans-Serif;font-weight: bold">Ten San Pham</h4>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <hr style="margin-top: 50px">
     <div class="container">
         <div class="new-content" style="text-align: center;text-decoration: underline">
             <h1>New</h1>
+            <br>
+            <br>
         </div>
-        <div class="row">
-            <div class="col-md-4"><img class="d-block w-100" src="{{ asset('upload\home-banner\mix.jpg') }}"><h4>TOP 4 KIỂU ÁO KHOÁC NAM THỜI TRANG CHO MÙA ĐÔNG 2019</h4></div>
-            <div class="col-md-4"><img class="d-block w-100" src="{{ asset('upload\home-banner\mix.jpg') }}"><h4>NHỮNG BÍ QUYẾT MẶC ÁO KHOÁC NAM ĐẸP DÀNH CHO NAM GIỚI</h4></div>
-            <div class="col-md-4"><img class="d-block w-100" src="{{ asset('upload\home-banner\mix.jpg') }}"><h4>CÁCH PHỐI ĐÔ THỜI TRANG THU ĐÔNG CHO NAM GIỚI 2019</h4></div>
+        <div class="row" >
+            <div class="col-md-4"><img class="d-block w-100" src="{{ asset('upload\AKGQC209-15.jpg') }}"><h4 style="margin-top: 10px">NHỮNG KIỂU ÁO KHOÁC PHAO NAM ĐẸP CHO MÙA ĐÔNG</h4><h6>Bạn đang muốn làm mới mình với những chiếc áo khoác nam cá tính vừa hữu dụng vừa thời trang,...</h6></div>
+            <div class="col-md-4"><img class="d-block w-100" src="{{ asset('upload\AKGQC209-15.jpg') }}"><h4 style="margin-top: 10px">NHỮNG KIỂU ÁO KHOÁC PHAO NAM ĐẸP CHO MÙA ĐÔNG</h4><h6>Bạn đang muốn làm mới mình với những chiếc áo khoác nam cá tính vừa hữu dụng vừa thời trang,...</h6></div>
+            <div class="col-md-4"><img class="d-block w-100" src="{{ asset('upload\AKGQC209-15.jpg') }}"><h4 style="margin-top: 10px">NHỮNG KIỂU ÁO KHOÁC PHAO NAM ĐẸP CHO MÙA ĐÔNG</h4><h6>Bạn đang muốn làm mới mình với những chiếc áo khoác nam cá tính vừa hữu dụng vừa thời trang,...</h6></div>
 
         </div>
     </div>
     <hr>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
+    <div>
+
+    </div>
 @endsection

@@ -51,9 +51,7 @@ class CartController extends Controller
 
     }
 
-    public function payNow(){
-        return view("checkout");
-    }
+
     public function removeItemCart($rowid,Request $request){
         Cart::remove($rowid);
         return redirect(route('gio-hang'));

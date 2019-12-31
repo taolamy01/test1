@@ -47,9 +47,7 @@
                     </div>
                 </div>
                 <div>
-                    @foreach($order_product as $aa)
-                           <div>{{$aa->product_name}}</div>
-                    @endforeach
+                   11
                 </div>
             </div>
 
@@ -130,6 +128,7 @@
                                     <div class="col-md-12">
                                         <div class="pull-right">
                                             <button class="btn btn-primary" type="submit">Save</button>
+                                            <a class="btn btn-primary" href="{{route('edit-order',$order->id)}}">Edit Order</a>
                                         </div>
                                     </div>
                                 </td>
@@ -141,6 +140,8 @@
             </div>
         </div>
     </div>
+
+
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('assets\admin\vendor/jquery/jquery.js') }}"></script>
     <!-- Bootstrap core JavaScript <script src="{{ asset('assets\admin\vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>-->

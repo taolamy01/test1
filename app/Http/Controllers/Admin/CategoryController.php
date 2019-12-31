@@ -5,7 +5,7 @@ use DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Categories;
-
+use Session;
 class CategoryController extends Controller
 
 {
@@ -35,7 +35,10 @@ class CategoryController extends Controller
     function postaddCategory(Request $request)
     {
         $post = $request->all();
-
+        if ($post['parent'] == null)
+        {
+            $post['lever1']=null;
+        }
         $request->validate([
             'category_name' => 'required|unique:Categories|max:255',
            // 'image_category' => 'required',
@@ -66,7 +69,7 @@ class CategoryController extends Controller
           //     $categoriModel->save();
            // }
         //}
-
+        Session::flash('message', 'Bạn đã thêm thành công, cám ơn bạn');
         return redirect(route('list-danh-muc'));
     }
     /**/

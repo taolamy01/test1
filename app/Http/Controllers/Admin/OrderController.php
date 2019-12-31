@@ -35,4 +35,9 @@ class OrderController extends Controller
         $list_product=Orders::getAllProductByOrderId($id);
         return view('admin.order.detail',compact('order','list_product'));
     }
+    function editorder($id,Request $request){
+        $order_product=DB::table("Order_product")->where('order_id','=',$id)->get();
+
+        return view('admin.order.edit_order',compact('order_product'));
+    }
 }

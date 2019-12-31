@@ -25,7 +25,8 @@ Route::get("product-detail/{id}",['as'=>'product-detail','uses'=>"ProductControl
 Route::post("add-to-cart/{id}",['as'=>'add-to-cart','uses'=>"CartController@postAddTocart"]);
 Route::get("thanh-toan",['as'=>'thanh-toan','uses'=>"CartController@payNow"]);
 Route::post("update-cart/{id}",['as'=>'update-cart','uses'=>"CartController@updateCart"]);
-Route::get("danh-muc/{id}",['as'=>'danh-muc','uses'=>"CartController@payNow"]);
+Route::get("danh-muc/{id}",['as'=>'danh-muc','uses'=>"HomeController@parent"]);
+Route::get("lever1/{id}",['as'=>'lever1','uses'=>"HomeController@lever1"]);
 Route::post("thanh-toan",['as'=>'thanh-toan','uses'=>"CartController@postpayNow"]);
 Route::post("remove-item-cart/{rowid}",['as'=>'remove-item-cart','uses'=>"CartController@removeItemCart"]);
 //TODO Sua dang nhap
@@ -40,6 +41,7 @@ Route::post("lien-he",['as'=>'lien-he','uses'=>"CartController@removeItemCart"])
 Route::get("gio-hang/",['as'=>'gio-hang','uses'=>"CartController@index"]);
 
 Route::get("new",['as'=>'new','uses'=>"HomeController@new"]);
+Route::get("sale",['as'=>'sale','uses'=>"HomeController@sale"]);
 
 
 Route::group(['prefix'=>'admin','namespace'=>"Admin"],function(){
@@ -80,6 +82,8 @@ Route::group(['prefix'=>'admin','namespace'=>"Admin"],function(){
 
         //root/admin/don-hang/chi-tiet-don-hang
         Route::get("chi-tiet-don-hang/{id}",['as'=>'chi-tiet-don-hang','uses'=>"OrderController@getOrderDetail"]);
+
+        Route::get("edit-order/{id}",['as'=>'edit-order','uses'=>"OrderController@editorder"]);
 
         Route::post("update-order/{id}",['as'=>'post-edit-order','uses'=>"OrderController@updateOrder"]);
 

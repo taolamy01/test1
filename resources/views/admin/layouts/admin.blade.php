@@ -65,12 +65,10 @@
         $number=DB::table("Orders")->where('status','=','pending')->get();
         $number_order=DB::table("Orders")->where('status','=','pending')->count();
         $aa=$number->count();
-        $pending_order=DB::table("Orders")->where('status','=','pending')->max('id');/*video 34 phust 48:00*/
-        $pending_order0=DB::table("Orders")->where('id','=',$pending_order)->where('status','=','pending')->get();/*video 34 phust 48:00*/
-        $pending_order1=DB::table("Orders")->where('id','=',$pending_order-1)->where('status','=','pending')->get();/*video 34 phust 48:00*/
-        $pending_order2=DB::table("Orders")->where('id','=',$pending_order-2)->where('status','=','pending')->get();/*video 34 phust 48:00*/
-        $a = ["$pending_order0", "$pending_order1", "$pending_order2"];
-        $aa=$number->count();
+        $id_order_max=DB::table("Orders")->where('status','=','pending')->max('id');/*video 34 phust 48:00*/
+        $pending_order=DB::table("Orders")->orderBy('id', 'DESC')->limit(3)->where('status','=','pending')->whereBetween('id', [1, $id_order_max])->get();
+
+
 
 
 
@@ -309,7 +307,7 @@
                             <h6 class="dropdown-header">
                                 Đơn Hàng Mới
                             </h6>
-                            @foreach($pending_order0 as $aaa)
+                            @foreach($pending_order as $aaa)
                             <a class="dropdown-item d-flex align-items-center" href="{{route('chi-tiet-don-hang',$aaa->id)}}">
                                 <div class="dropdown-list-image mr-3">
                                     <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
@@ -323,38 +321,7 @@
                                 </div>
                             </a>
                             @endforeach
-                            @foreach($pending_order1 as $aaa)
-                            <a class="dropdown-item d-flex align-items-center" href="{{route('chi-tiet-don-hang',$aaa->id)}}">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                                    <div class="status-indicator bg-success"></div>
-                                </div>
-                                <div class="font-weight-bold">
-                                    <div class="text-truncate">
 
-                                            Đơn Hàng {{$aaa->id}}
-
-                                    </div>
-                                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                </div>
-                            </a>
-                            @endforeach
-                            @foreach($pending_order2 as $aaa)
-                            <a class="dropdown-item d-flex align-items-center" href="{{route('chi-tiet-don-hang',$aaa->id)}}">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                                    <div class="status-indicator bg-success"></div>
-                                </div>
-                                <div class="font-weight-bold">
-                                    <div class="text-truncate">
-
-                                            Đơn Hàng {{$aaa->id}}
-
-                                    </div>
-                                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                </div>
-                            </a>
-                            @endforeach
 
                             <a class="dropdown-item text-center small text-gray-500" href="{{route('list-don-hang')}}">Xem Toàn Bộ</a>
                         </div>

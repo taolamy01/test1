@@ -28,6 +28,11 @@ class ProductController extends Controller
 /**/
     function postAddProduct(Request $request){
         $post = $request->all();
+        $category_lever1=DB::table("Categories")->where('id','=',$post['category_id'])->get();
+        foreach ($category_lever1 as $user) {
+        }
+
+
 
         $request->validate([
             'product_name' => 'required|unique:products|max:255',
@@ -43,6 +48,7 @@ class ProductController extends Controller
         $productModel = new products();
         $productModel->product_name = $post['product_name'];
         $productModel->category_id = $post['category_id'];
+        $productModel->category_lever1 = $user->lever1;
         $productModel->S = $post['S'];
         $productModel->M = $post['M'];
         $productModel->L = $post['L'];

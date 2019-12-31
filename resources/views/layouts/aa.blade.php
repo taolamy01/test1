@@ -33,13 +33,23 @@
 @php
     $list_root_category=DB::table("Categories")->where('parent','=',null)->get();/*video 34 phust 48:00*/
     $list_sub_category=DB::table("Categories")->where('parent','!=',null)->where('lever1','=',null)->get();/*video 34 phust 48:00*/
+    $list_lever1_category=DB::table("Categories")->where('lever1','!=',null)->get();/*video 34 phust 48:00*/
 @endphp
 
-<div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm " style=" position: -webkit-sticky;position: sticky;top: 0;padding: 5px;z-index: 99;">
-        <div class="container">
+<div id="app" >
+
+    <nav class="navbar navbar-expand-md navbar-light shadow-sm " style="position: -webkit-sticky;position: sticky;top: 0;padding: 5px;z-index: 99;background: rgba(255, 255, 255, 0.6);" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+        <script>
+            function bigImg(x) {
+                x.style.background = "rgba(255, 255, 255, 1)";
+            }
+            function normalImg(x) {
+                x.style.background = "rgba(255, 255, 255, 0.5)";
+            }
+        </script>
+    <div class="container">
             <a class="navbar-brand" href="{{route('home')}}">
-                <img src="{{ asset('upload\t1-7-15705234857161486648520.png') }}" width="70" height="70" alt="">
+                <img src="{{ asset('upload\admin-ajax-1.png') }}" width="70" height="70" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -48,31 +58,31 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent" >
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <form class="form-inline my-2 my-lg-3">
-                        <input class="form-control mr-sm-1" type="search" placeholder="VD:Giày thể thao" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
+
                 </ul>
 
                 <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav ml-auto" style="font-size: 20px;font-family: Sans-Serif">
+                    <ul class="navbar-nav mr-auto*" style="margin-right: 55px">
                         <li class="nav-item active">
-                            <a class=""  href="#"><span class="sr-only" style="display: none">(current)</span></a>
+                            <a class=""  href="#"><span class="sr-only" >(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"  href="{{route('home')}}"><i class="fas fa-home"></i></i>&nbsp&nbsp</i>Home</a></li>
+                            <a class="nav-link"  href="{{route('home')}}"><i class="fas fa-home"></i></i>&nbsp&nbsp</i>Trang Chủ</a></li>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"  href="{{route('new')}}"><i class="fas fa-home"></i></i>&nbsp&nbsp</i>New</a></li>
+                            <a class="nav-link"  href="{{route('new')}}">&nbsp&nbspNew&nbsp&nbsp</a></li>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"  href="{{route('gio-hang')}}"><i class="fas fa-shopping-cart"></i>&nbsp&nbsp</i>Catr</a></li>
+                            <a class="nav-link"  href="{{route('sale')}}">&nbsp&nbspSale&nbsp&nbsp</a></li>
+                        </li>
+                        <li class="nav-item" style="display:none;">
+                            <a class="nav-link"  href="{{route('gio-hang')}}">&nbsp&nbspCart&nbsp&nbsp</a></li>
                         </li>
                         @foreach($list_root_category as $root_category)
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown" style="display:none;">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="{{route('danh-muc',$root_category->id)}}">
-                                    {{$root_category->category_name}}
+                                    &nbsp&nbsp{{$root_category->category_name}}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @foreach($list_sub_category as $sub_category)
@@ -83,10 +93,70 @@
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">Something else here</a>
                                 </div>
+
                             </li>
                         @endforeach
 
+
+                        @foreach($list_root_category as $root_category)
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="">
+                                &nbsp&nbsp{{$root_category->category_name}}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-borderless" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                            @foreach($list_sub_category as $sub_category)
+                                                @if($sub_category->parent==$root_category->id)
+                                                <th>
+                                                    <a class="dropdown-item" href="{{route('danh-muc',$sub_category->id)}}" style="width: 150px;font-weight: bold;font-family: Sans-Serif">{{$sub_category->category_name}}</a>
+                                                    <div class="dropdown-divider"></div>
+                                                </th>
+                                                @endif
+                                            @endforeach
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                @foreach($list_sub_category as $sub_category)
+                                                    @if($sub_category->parent==$root_category->id)
+                                                            <td>
+                                                                <ul style="margin: 0;padding: 0;">
+                                                                    @foreach($list_lever1_category as $lever1_category)
+                                                                        @if($lever1_category->lever1==$sub_category->id)
+                                                                            <div style="margin-left: 10px" >
+                                                                                <a class="dropdown-item" href="{{route('lever1',$lever1_category->id)}}" style="font-family: Sans-Serif">{{$lever1_category->category_name}}</a>
+                                                                                </div>
+                                                                        @endif
+                                                                    @endforeach
+                                                                </ul>
+                                                            </td>
+                                                    @endif
+                                                @endforeach
+                                            </tr>
+                                            </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+
+
+                        </li>
+                        @endforeach
+                        <li class="nav-item">
+                            <a class="nav-link"  href="{{route('gio-hang')}}">&nbsp&nbspBộ Sưu Tập&nbsp&nbsp</a></li>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"  href="{{route('gio-hang')}}">&nbsp&nbspTuyển Dụng&nbsp&nbsp</a></li>
+                        </li>
                     </ul>
+
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
@@ -106,7 +176,7 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                                 document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 
@@ -124,6 +194,9 @@
     <main class="py-4" >
         @yield('content')
     </main>
+    <div class="container">
+        @extends('layouts.footer')
+    </div>
 </div>
 </body>
 </html>

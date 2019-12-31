@@ -27,11 +27,10 @@
                                         <tr>
                                             <th>Parent</th>
                                             <td>
-                                                <select name="parent">
+                                                <select name="parent" id="parent">
                                                     <option value="">Root</option>
                                                     @foreach($list_root_category as $category)
                                                         <option value="{{$category->id}}">{{$category->category_name}}</option>
-
                                                     @endforeach
                                                 </select>
                                             </td>
@@ -42,8 +41,7 @@
                                                 <select name="lever1">
                                                     <option value="">Root</option>
                                                     @foreach($list_lever1 as $lever1)
-                                                        <option value="{{$lever1->id}}">{{$lever1->category_name}}</option>
-
+                                                        <option style="display: none" id='asd' class="a{{$lever1->parent}}" value="{{$lever1->id}}">{{$lever1->category_name}}</option>
                                                     @endforeach
                                                 </select>
                                             </td>
@@ -79,5 +77,30 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            $('#parent').on('change', function() {
+                @foreach($list_root_category as $category)
+                if ($(this).val()=='{{$category->id}}')
+                {
+                    @foreach($list_lever1 as $lever1)
+                    $(".a{{$lever1->parent}}").css("display", "none");
+                    @endforeach
+                    $(".a{{$category->id}}").css("display", "block");
+                }
+                ;
+                @endforeach
+            });
+            $('#parent').on('change', function() {
+                if ($(this).val()=='')
+                {
+                    @foreach($list_lever1 as $lever1)
+                    $(".a{{$lever1->parent}}").css("display", "none");
+                    @endforeach
+                }
+                ;
 
+            });
+        });
+    </script>
 @endsection
