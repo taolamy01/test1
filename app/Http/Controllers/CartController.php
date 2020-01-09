@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use \Cart;
 use App\Customers;
 use App\Orders;
-
+use Auth;
 
 
 
@@ -24,18 +24,19 @@ class CartController extends Controller
     public function postAddTocart($id,Request $request){
         $product=Products::find($id);
         $post=$request->all();
-
+        $size=$post['size'];
         $price=$product->price;
         if($product->sale_price){
             $price=$product->sale_price;
         }
-        Cart::add($id,$product->product_name,$post['quality'],$price);
+        Cart::add($id,$product->product_name,$post['quality'],$price,['size' => $size]);
         return redirect(route('gio-hang'));
 
     }
  public function updateCart($id,Request $request){
         $product=Products::find($id);
         $post=$request->all();
+        $size=$post['size'];
         $qty=$post['qty']-$post['qty2'];
          if ($qty == 0)
          {
@@ -46,7 +47,7 @@ class CartController extends Controller
             $price=$product->sale_price;
         }
 
-        Cart::add($id,$product->product_name,$qty,$price);
+        Cart::add($id,$product->product_name,$qty,$price,['size' => $size]);
         return redirect(route('gio-hang'));
 
     }
@@ -55,6 +56,14 @@ class CartController extends Controller
     public function removeItemCart($rowid,Request $request){
         Cart::remove($rowid);
         return redirect(route('gio-hang'));
+    }
+
+    public function paynow(){
+        if (Auth::check()) {        //nếu người dùng đã đăng nhập thì sẽ làm gì đó ở đây
+            return view('checkout2');
+        }
+
+        return view('checkout');
     }
 
     public function postpayNow(Request $request){

@@ -29,9 +29,23 @@
                                 <h1>Sản phẩm {{$products->product_name}}</h1>
 
                                 <div class="prices" style="color:red;font-size: 24px;font-weight: bold;height: 100px;line-height: 100px">
-                                    <span class="sale-price">{{$products->sale_price}}</span>
-                                    <span class="price">{{$products->price}}</span>
-                                    <span class="currency">đ</span>
+                                    <span class="price">
+                                       @if($products->sale_price)
+                                                {{number_format($products->sale_price)}}$
+                                            @else
+                                                {{number_format($products->price)}}$
+                                            @endif
+                                    </span>
+
+                                    <span class="price" style="color:red;text-decoration: line-through">
+                                         @if($products->sale_price)
+                                            {{number_format($products->price)}}$
+                                            @else
+
+                                            @endif
+                                    </span>
+
+
                                 </div>
                                 <div class="Size" style="height: 100px;">
                                         <fieldset data-role="controlgroup">

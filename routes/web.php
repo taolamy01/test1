@@ -15,10 +15,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin', 'HomeController@indexadmin')->name('admin');
-Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+Route::get('/admin', 'AdminController@indexadmin')->name('admin');
+Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard');
+
 
 Route::get("product-detail/{id}",['as'=>'product-detail','uses'=>"ProductController@getDetailProduct"]);
 
@@ -28,9 +31,9 @@ Route::post("update-cart/{id}",['as'=>'update-cart','uses'=>"CartController@upda
 Route::get("danh-muc/{id}",['as'=>'danh-muc','uses'=>"HomeController@parent"]);
 Route::get("lever1/{id}",['as'=>'lever1','uses'=>"HomeController@lever1"]);
 Route::post("thanh-toan",['as'=>'thanh-toan','uses'=>"CartController@postpayNow"]);
-Route::post("remove-item-cart/{rowid}",['as'=>'remove-item-cart','uses'=>"CartController@removeItemCart"]);
+Route::get("remove-item-cart/{rowid}",['as'=>'remove-item-cart','uses'=>"CartController@removeItemCart"]);
 //TODO Sua dang nhap
-Route::post("dang-nhap",['as'=>'dang-nhap','uses'=>"CartController@removeItemCart"]);
+Route::get("dang-nhap",['as'=>'dang-nhap','uses'=>"HomeController@dangnhap"]);
 //TODO Sua tim kiem
 Route::post("tim-kiem",['as'=>'tim-kiem','uses'=>"CartController@removeItemCart"]);
 //TODO Sua gioi-thieu

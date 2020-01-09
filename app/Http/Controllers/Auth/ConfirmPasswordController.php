@@ -25,6 +25,7 @@ class ConfirmPasswordController extends Controller
      *
      * @var string
      */
+
     protected $redirectTo = '/home';
 
     /**
@@ -32,6 +33,10 @@ class ConfirmPasswordController extends Controller
      *
      * @return void
      */
+    protected function redirectTo()
+    {
+        return '/home';
+    }
     public function __construct()
     {
         $this->middleware('auth');

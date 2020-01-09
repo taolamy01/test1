@@ -62,6 +62,16 @@
                                 </th>
                             </tr>
                             <tr>
+                                <th>New</th>
+                                <th>
+                                    <select name="new">
+                                        <option value="1">New</option>
+                                        <option value="0">Old</option>
+                                    </select>
+
+                                </th>
+                            </tr>
+                            <tr>
                                 <th>price</th>
                                 <th>
                                     <input type="text" name="price" class="form-control" value="100000">

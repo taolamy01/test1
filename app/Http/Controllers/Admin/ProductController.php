@@ -28,11 +28,14 @@ class ProductController extends Controller
 /**/
     function postAddProduct(Request $request){
         $post = $request->all();
-        $category_lever1=DB::table("Categories")->where('id','=',$post['category_id'])->get();
+        $category_lever1=DB::table("Categories")->where('id','=',$post['category_id'])->value('lever1');
+         /*
+        $category_lever2=DB::table("Categories")->where('id','=',$post['category_id'])->get();
         foreach ($category_lever1 as $user) {
         }
 
-
+        $productModel = new products();
+        $productModel->category_lever1 = $user->lever1;*/
 
         $request->validate([
             'product_name' => 'required|unique:products|max:255',
@@ -40,7 +43,7 @@ class ProductController extends Controller
             'price' => 'required',
             'ordering' => 'required',
             //TODO lat nua phai lam upload product
-            //'product_image_intro' => 'required',
+            'product_image_intro' => 'required',
             'description' => 'required',
             'full_description' => 'required'
         ]);
@@ -48,7 +51,7 @@ class ProductController extends Controller
         $productModel = new products();
         $productModel->product_name = $post['product_name'];
         $productModel->category_id = $post['category_id'];
-        $productModel->category_lever1 = $user->lever1;
+        $productModel->category_lever1 = $category_lever1;
         $productModel->S = $post['S'];
         $productModel->M = $post['M'];
         $productModel->L = $post['L'];
@@ -56,6 +59,7 @@ class ProductController extends Controller
         $productModel->XXL = $post['XXL'];
         $productModel->total_size = $post['S']+$post['M']+$post['L']+$post['XL']+$post['XXL'];
         $productModel->publish = $post['publish'];
+        $productModel->new = $post['new'];
         $productModel->price = $post['price'];
         $productModel->sale_price = $post['sale_price'];
         $productModel->ordering = $post['ordering'];
@@ -104,6 +108,7 @@ class ProductController extends Controller
         $productModel->product_name=$post['product_name'];
         $productModel->category_id=$post['category_id'];
         $productModel->publish=$post['publish'];
+        $productModel->new=$post['new'];
         $productModel->S = $post['S'];
         $productModel->M = $post['M'];
         $productModel->L = $post['L'];

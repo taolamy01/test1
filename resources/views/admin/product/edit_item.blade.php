@@ -66,6 +66,17 @@
                                     </th>
                                 </tr>
                                 <tr>
+                                    <th>New</th>
+                                    <th>
+
+                                        <select name="new">
+                                            <option     <?php echo $product->new==1?' selected ':'' ?> value="1">Yes</option><?php echo $product->new==0?' selected ':'' ?> value="0">Old</option>
+                                            <option     <?php echo $product->new==0?' selected ':'' ?> value="0">No</option> <?php echo $product->new==1?' selected ':'' ?> value="1">New</option>
+                                        </select>
+
+                                    </th>
+                                </tr>
+                                <tr>
                                     <th>price</th>
                                     <th>
                                         <input type="text" name="price" value="{{$product->price}}" class="form-control">

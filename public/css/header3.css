@@ -128,3 +128,45 @@
 }
 /*footer-link*/
 /*footer*/
+.font-sans{
+    font-family: Sans-Serif
+}
+.font-bold{
+    font-weight: bold
+}
+.margin30{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.chufree{
+    top: -5px;
+    right: -10px;
+    z-index: 3;
+}
+.ulnone{
+    list-style: none;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+/*megamenu*/
+.megamenu-item {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+.megamenu-item:hover, .megamenu-item:focus {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #58dd55;
+}
+/*megamenu*/

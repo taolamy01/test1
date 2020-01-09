@@ -18,7 +18,7 @@
                             <th style="width: 155px">Product_image_intro</th>
                             <th>Category_id</th>
                             <th>Price Sale Price</th>
-                            <th>Description</th>
+                            <th>New</th>
                             <th><a href="{{route('them-san-pham')}}" class="btn btn-primary">Add Sản Phẩm</a></th>
                         </tr>
                         </thead>
@@ -42,7 +42,7 @@
                                     <br>
                                     Sale Price: {{$product->sale_price}}
                                 </td>
-                                <td>{{$product->description}}</td>
+                                <td>{{$product->new}}</td>
                                 <td><a href="{{route('sua-san-pham',$product->id)}}" class="btn btn-primary">Edit</a>
                                     <a href="{{route('xoa-san-pham',$product->id)}}" class="btn btn-primary">Delete</a>
                                 </td>

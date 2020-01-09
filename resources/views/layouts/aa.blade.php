@@ -31,7 +31,7 @@
 </head>
 <body>
 @php
-    $list_root_category=DB::table("Categories")->where('parent','=',null)->get();/*video 34 phust 48:00*/
+    $list_root_category=DB::table("Categories")->limit(2)->where('parent','=',null)->get();/*video 34 phust 48:00*/
     $list_sub_category=DB::table("Categories")->where('parent','!=',null)->where('lever1','=',null)->get();/*video 34 phust 48:00*/
     $list_lever1_category=DB::table("Categories")->where('lever1','!=',null)->get();/*video 34 phust 48:00*/
 @endphp
@@ -87,7 +87,7 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @foreach($list_sub_category as $sub_category)
                                         @if($sub_category->parent==$root_category->id)
-                                            <a class="dropdown-item"href="{{route('danh-muc',$sub_category->id)}}">{{$sub_category->category_name}}</a>
+                                            <a class="dropdown-item" href="{{route('danh-muc',$sub_category->id)}}">{{$sub_category->category_name}}</a>
                                         @endif
                                     @endforeach
                                     <div class="dropdown-divider"></div>
@@ -200,3 +200,4 @@
 </div>
 </body>
 </html>
+

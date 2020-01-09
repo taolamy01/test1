@@ -20,20 +20,30 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+    public function username()
+    {
+         return 'email';
 
+    }
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-
+    protected function redirectTo()
+    {
+        if (auth()->user()->name == 'admin') {
+            return '/dashboard';
+        }
+        return '/home';
+    }
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
